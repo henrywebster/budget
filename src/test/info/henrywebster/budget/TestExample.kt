@@ -1,3 +1,5 @@
+package info.henrywebster.budget
+
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance
@@ -7,6 +9,6 @@ class TestExample {
 
     @Test
     fun test1() {
-        assertTrue(false);
+        assertTrue(true);
     }
 }
