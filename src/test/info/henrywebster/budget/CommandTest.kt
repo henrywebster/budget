@@ -1,21 +1,23 @@
 package info.henrywebster.budget
 
+import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 
 import info.henrywebster.budget.command.CommandFactory
-// import info.henrywebster.budget.command.Command;
-
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class TestExample {
+class CommandTest {
 
     @Test
-    fun test1() {
+    fun basicFactoryTest() {
 
-        val c = CommandFactory.newCommand("add")
+        val list = ArrayList<String>()
+        val c = CommandFactory.newCommand(list, "add")
         c.run()
-        assertTrue(true)
+
+        assertFalse(list.isEmpty())
+        assertTrue(list.contains("add"))
     }
 }

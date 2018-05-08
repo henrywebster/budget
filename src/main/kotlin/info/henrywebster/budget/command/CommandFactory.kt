@@ -1,9 +1,11 @@
 package info.henrywebster.budget.command
 
+import kotlin.collections.MutableList;
+
 class CommandFactory {
     companion object {
-        fun newCommand(keyword: String) : Command {
-            return CommandImpl(keyword)
+        fun newCommand(list: MutableList<String>, item: String): Command {
+            return AddToListCmd(list, item)
         }
     }
 }

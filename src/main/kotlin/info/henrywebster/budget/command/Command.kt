@@ -8,6 +8,6 @@ package info.henrywebster.budget.command
  * Command
  */
 
-interface Command {
+interface Command  {
     fun run()
 }
