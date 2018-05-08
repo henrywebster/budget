@@ -11,13 +11,27 @@ import info.henrywebster.budget.command.CommandFactory
 class CommandTest {
 
     @Test
-    fun basicFactoryTest() {
+    fun addListTest() {
 
         val list = ArrayList<String>()
-        val c = CommandFactory.newCommand(list, "add")
+        val c = CommandFactory.newAddListCommand(list, "add")
         c.run()
 
         assertFalse(list.isEmpty())
         assertTrue(list.contains("add"))
+    }
+
+    @Test
+    fun removeListTest() {
+
+        val list = ArrayList<String>()
+        val cmdAdd = CommandFactory.newAddListCommand(list, "add")
+        cmdAdd.run()
+
+        val cmdRemove = CommandFactory.newRemoveListCommand(list, "add")
+        cmdRemove.run()
+
+        assertTrue(list.isEmpty())
+        assertFalse(list.contains("add"))
     }
 }
