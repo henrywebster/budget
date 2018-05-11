@@ -1,0 +1,11 @@
+
+
+> create HenrysBudget
+HenrysBudget> add $10.10 Expenses:Credit Dunkin Donuts
+
+
+Create
+------
+keyword: create
+action: add a budget named <remaining> to the global list of budgets
+

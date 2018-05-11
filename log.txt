@@ -1,0 +1,31 @@
+Henry Webster
+
+Week 1:
+Design: 7 hrs
+Coding and Debugging: 3 hr
+Dealing with Big bugs: 1 hrs
+
+*   The thing I am counting as the "big bug" is the build system. Since I have
+    never used Maven before, it took a lot of trial and error to get it playing
+    nicely. I decided on Maven because my job uses it and I wanted practice.
+
+*   It is hard to keep track of the hours spent designing! I find myself
+    thinking about configurations constantly. It is interesting because I
+    think I have it figured out, it takes only a few minutes to code, and
+    I come across a problem in the architecture. Back to designing.
+
+*   The majority of coding and debugging time went to getting adjusted to
+    Kotlin, which I have never used before. Although much of Java translates
+    to Kotlin, the slight syntactical differences meant I was checking the
+    references constantly. So far I am really enjoying the language.
+
+*   I totally recommend getting a programming style plug-in. With languages
+    I have used for a while, there's a certain personal style I've grown used
+    to. I never felt the need for these tools. Now that I am coding in a brand
+    new language, I have no prejudices. I can hit a key and everything lines up
+    perfectly. Things such as how to name functions and variables are not
+    automated, but still the IDE gives hints & warnings.
+
+*   Next week I will have a more detailed report, I didn't notice I should be
+    keeping a daily log, rather than the weekly check-ins.
+

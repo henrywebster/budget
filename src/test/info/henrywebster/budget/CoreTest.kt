@@ -17,7 +17,7 @@ import info.henrywebster.budget.command.CommandFactory
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CoreTest {
 
-    fun tmpHelper(token: UIToken, list: MutableList<Budget>, budget: Budget) : Command {
+    private fun tmpHelper(token: UIToken, list: MutableList<Budget>, budget: Budget): Command {
         return when (token) {
             UIToken.ADD -> CommandFactory.newAddListCommand(list, budget)
             UIToken.REMOVE -> CommandFactory.newRemoveListCommand(list, budget)

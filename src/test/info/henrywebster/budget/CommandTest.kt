@@ -14,11 +14,13 @@ class CommandTest {
     fun addListTest() {
 
         val list = ArrayList<String>()
-        val c = CommandFactory.newAddListCommand(list, "add")
+        val testString = "test"
+        val c =
+            CommandFactory.newListCommand<String>(list, testString, { l: MutableList<String>, s: String -> l.add(s) })
         c.run()
 
         assertFalse(list.isEmpty())
-        assertTrue(list.contains("add"))
+        assertTrue(list.contains(testString))
     }
 
     @Test
