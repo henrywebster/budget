@@ -61,4 +61,29 @@ class UITest {
                 form.checkInput(0, "mybudget2")
         )
     }
+
+    // TODO(tmp)
+    @Test
+    fun uiTmpFormTest() {
+
+        val builder = UIFormBuilder()
+
+        val testFun: (String) -> Boolean = { arg: String ->
+            try {
+                Integer.parseInt(arg)
+                true
+            } catch (e: NumberFormatException) {
+                false
+            }
+        }
+        val predicate = Predicate<String>(testFun)
+
+        builder.add("balance", predicate)
+        builder.add("exit?", predicate)
+
+        val form = builder.toUIForm("Account balance")
+
+        assertTrue(form.checkInput(0, "100"))
+        assertFalse(form.checkInput(0, "notANumber"))
+    }
 }
