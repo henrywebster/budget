@@ -9,10 +9,8 @@ import org.junit.jupiter.api.TestInstance
 
 import info.henrywebster.budget.ui.UIParser
 import info.henrywebster.budget.ui.UIToken
-import info.henrywebster.budget.ui.UIBundle
 import info.henrywebster.budget.core.Budget
 import info.henrywebster.budget.command.CommandFactory
-import info.henrywebster.budgeti.TestHelper
 
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -24,8 +22,8 @@ class CoreTest {
 
     private fun tmpHelper(token: UIToken, list: MutableList<Budget>, budget: Budget): Command {
         return when (token) {
-            UIToken.ADD -> CommandFactory.newListCommand(list, budget, TestHelper.addBudgetFunction)
-            UIToken.REMOVE -> CommandFactory.newListCommand(list, budget, TestHelper.removeBudgetFunction)
+            UIToken.ADD -> CommandFactory.newMutableCollectionCommand(list, budget, TestHelper.addBudgetFunction)
+            UIToken.REMOVE -> CommandFactory.newMutableCollectionCommand(list, budget, TestHelper.removeBudgetFunction)
             else -> throw Exception()
         }
     }

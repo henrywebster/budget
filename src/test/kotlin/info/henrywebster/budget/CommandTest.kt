@@ -1,14 +1,17 @@
 package info.henrywebster.budget
 
+
+import kotlin.collections.ArrayList;
+
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
+import kotlin.test.assertEquals
+
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 
 import info.henrywebster.budget.command.CommandFactory
 import info.henrywebster.budget.core.Budget
-import info.henrywebster.budgeti.TestHelper
-import kotlin.test.assertEquals
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CommandTest {
@@ -20,7 +23,8 @@ class CommandTest {
 
         val list = ArrayList<String>()
         val testString = "test"
-        val c = CommandFactory.newListCommand<String>(list, testString, TestHelper.addStringFunction)
+        val c = CommandFactory.newMutableCollectionCommand(list, testString, TestHelper.addStringFunction);
+
         c.run()
 
         assertFalse(list.isEmpty())
@@ -32,10 +36,10 @@ class CommandTest {
 
         val list = ArrayList<String>()
 
-        val cmdAdd = CommandFactory.newListCommand(list, "add", TestHelper.addStringFunction)
+        val cmdAdd = CommandFactory.newMutableCollectionCommand(list, "add", TestHelper.addStringFunction)
         cmdAdd.run()
 
-        val cmdRemove = CommandFactory.newListCommand(list, "add", TestHelper.removeStringFunction)
+        val cmdRemove = CommandFactory.newMutableCollectionCommand(list, "add", TestHelper.removeStringFunction)
         cmdRemove.run()
 
         assertTrue(list.isEmpty())
