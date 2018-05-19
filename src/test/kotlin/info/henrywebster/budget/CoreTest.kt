@@ -12,15 +12,20 @@ import info.henrywebster.budget.ui.UIToken
 import info.henrywebster.budget.ui.UIBundle
 import info.henrywebster.budget.core.Budget
 import info.henrywebster.budget.command.CommandFactory
+import info.henrywebster.budgeti.TestHelper
 
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CoreTest {
 
+    companion object {
+        // static helper with common factory
+    }
+
     private fun tmpHelper(token: UIToken, list: MutableList<Budget>, budget: Budget): Command {
         return when (token) {
-            UIToken.ADD -> CommandFactory.newAddListCommand(list, budget)
-            UIToken.REMOVE -> CommandFactory.newRemoveListCommand(list, budget)
+            UIToken.ADD -> CommandFactory.newListCommand(list, budget, TestHelper.addBudgetFunction)
+            UIToken.REMOVE -> CommandFactory.newListCommand(list, budget, TestHelper.removeBudgetFunction)
             else -> throw Exception()
         }
     }

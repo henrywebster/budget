@@ -1,13 +1,6 @@
 package info.henrywebster.budget.command
 
 /**
- * add budget HenrysBudget
- * ->
- * Command(string, command, arg);
- * Command add = new LiteralEval("add", new)
- * Command
+ * Public wrapper interface for Java's Runnable
  */
-
-interface Command {
-    fun run()
-}
+interface Command : Runnable
