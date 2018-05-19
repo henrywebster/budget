@@ -1,7 +1,5 @@
 package info.henrywebster.budget.command
 
-import info.henrywebster.budget.core.Budget
-
 
 class CommandFactory {
     companion object {
@@ -12,12 +10,7 @@ class CommandFactory {
         }
 
         fun <T> newMonoCommand(item: T, method: (T) -> Boolean): Command {
-            return MonoCommand(item, method);
+            return MonoCommand(item, method)
         }
-
-        fun newBudgetCommand(budget: Budget, cmd: (Budget) -> Boolean): Command {
-            return MonoCommand(budget, cmd)
-        }
-
     }
 }

@@ -1,17 +1,13 @@
 package info.henrywebster.budget
 
 
-import kotlin.collections.ArrayList;
-
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
-import kotlin.test.assertEquals
-
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
-
 import info.henrywebster.budget.command.CommandFactory
 import info.henrywebster.budget.core.Budget
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
+import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CommandTest {
@@ -23,7 +19,7 @@ class CommandTest {
 
         val list = ArrayList<String>()
         val testString = "test"
-        val c = CommandFactory.newMutableCollectionCommand(list, testString, TestHelper.addStringFunction);
+        val c = CommandFactory.newMutableCollectionCommand(list, testString, TestHelper.addStringFunction)
 
         c.run()
 
@@ -53,10 +49,10 @@ class CommandTest {
 
         val testAmt = 945
         val testLiab = 500
-        val cmdBuySomething = CommandFactory.newBudgetCommand(
+        val cmdBuySomething = CommandFactory.newMonoCommand(
                 budget, { b: Budget ->
-            b.assets += testAmt;
-            b.liabilities += testLiab;
+            b.assets += testAmt
+            b.liabilities += testLiab
             b.equity = b.assets - b.liabilities; true
         })
 

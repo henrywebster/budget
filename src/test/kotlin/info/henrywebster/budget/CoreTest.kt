@@ -1,16 +1,16 @@
 package info.henrywebster.budget
 
 import info.henrywebster.budget.command.Command
-import kotlin.collections.ArrayList
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
-
+import info.henrywebster.budget.command.CommandFactory
+import info.henrywebster.budget.core.Budget
+import info.henrywebster.budget.core.BudgetFactory
+import info.henrywebster.budget.core.KeywordManager
 import info.henrywebster.budget.ui.UIParser
 import info.henrywebster.budget.ui.UIToken
-import info.henrywebster.budget.core.Budget
-import info.henrywebster.budget.command.CommandFactory
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -52,5 +52,24 @@ class CoreTest {
         remCmd.run()
 
         assertFalse(budgetList.contains(b))
+    }
+
+    @Test
+    fun keywordBindingTest() {
+
+        val keyword = "add"
+        val budgetName = "mybudget"
+
+        val function = { name: String -> BudgetFactory.addBudget(name) }
+
+        KeywordManager.bind(keyword, function)
+
+        val someFunction = KeywordManager.get(keyword)
+        val someCmd = CommandFactory.newMonoCommand(someFunction)
+
+        //////
+        val budgetList = ArrayList<Budget>()
+        val budget = Budget
+
     }
 }

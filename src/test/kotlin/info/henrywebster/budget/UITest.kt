@@ -1,17 +1,15 @@
 package info.henrywebster.budget
 
 import info.henrywebster.budget.core.Budget
-import info.henrywebster.budget.ui.*
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
+import info.henrywebster.budget.ui.UIFormBuilder
+import info.henrywebster.budget.ui.UIParser
+import info.henrywebster.budget.ui.UIToken
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
-
-import org.junit.jupiter.api.TestFactory
-import java.io.ByteArrayInputStream
-import java.nio.charset.StandardCharsets
 import java.util.function.Predicate
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class UITest {
@@ -41,7 +39,7 @@ class UITest {
         val builder = UIFormBuilder()
 
         val testFunc = { arg: String -> budgetMap.contains(arg) }
-        val predicate = Predicate<String>(testFunc)
+        val predicate = Predicate(testFunc)
 
         builder.add("add", predicate)
         builder.add("remove", predicate)
@@ -85,5 +83,22 @@ class UITest {
 
         assertTrue(form.checkInput(0, "100"))
         assertFalse(form.checkInput(0, "notANumber"))
+    }
+
+    // TODO(tmp)
+    @Test
+    fun interactionTest() {
+        val builder = UIFormBuilder()
+
+        val testFun: (String) -> Boolean = { arg: String ->
+            try {
+                Integer.parseInt(arg)
+                true
+            } catch (e: NumberFormatException) {
+                false
+            }
+        }
+
+
     }
 }
