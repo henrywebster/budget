@@ -1,24 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="13c66b7d-b2bd-4f27-a4d1-96b174f96597" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_20_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_univocity_univocity_parsers_2_6_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_kotlintest_kotlintest_assertions_3_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_kotlintest_kotlintest_core_3_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_kotlintest_kotlintest_runner_junit5_3_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_21_0_GA.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_reflect_1_2_30.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_suite_api_1_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_reflections_reflections_0_9_11.xml" afterDir="false" />
+    <list default="true" id="13c66b7d-b2bd-4f27-a4d1-96b174f96597" name="Default" comment="working on UI forms">
+      <change afterPath="$PROJECT_DIR$/lecture-08-notes" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/notes-lecture08.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/budget.iml" beforeDir="false" afterPath="$PROJECT_DIR$/budget.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/info/henrywebster/budget/Hello.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/info/henrywebster/budget/CommandTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/info/henrywebster/budget/CommandTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/info/henrywebster/budget/CoreTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/info/henrywebster/budget/CoreTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/info/henrywebster/budget/UITest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/info/henrywebster/budget/UITest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -39,23 +26,29 @@
           <file leaf-file-name="CommandTest.kt" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/test/kotlin/info/henrywebster/budget/CommandTest.kt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-251">
-                  <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+                <state>
+                  <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="CoreTest.kt" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/test/kotlin/info/henrywebster/budget/CoreTest.kt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret line="40" selection-start-line="40" selection-end-line="40" />
                   <folding>
-                    <element signature="e#34#226#0" expanded="true" />
+                    <element signature="e#34#485#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="CoreTest.kt" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/test/kotlin/info/henrywebster/budget/CoreTest.kt">
+          <file leaf-file-name="lecture-08-notes" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/lecture-08-notes">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-256">
-                  <caret line="22" selection-start-line="22" selection-end-line="22" />
-                  <folding>
-                    <element signature="e#34#485#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="186">
+                  <caret line="6" selection-start-line="6" selection-end-line="6" />
                 </state>
               </provider>
             </entry>
@@ -67,20 +60,26 @@
           <file leaf-file-name="UITest.kt" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/test/kotlin/info/henrywebster/budget/UITest.kt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="620">
-                  <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
-                  <folding>
-                    <element signature="e#34#394#0" expanded="true" />
-                  </folding>
+                <state>
+                  <caret line="40" column="21" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+          <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/pom.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="82">
+                <state relative-caret-position="682">
                   <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="log.txt" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/log.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="873">
+                  <caret line="51" column="77" selection-start-line="51" selection-start-column="77" selection-end-line="51" selection-end-column="77" />
                 </state>
               </provider>
             </entry>
@@ -138,6 +137,8 @@
         <option value="$PROJECT_DIR$/src/main/kotlin/info/henrywebster/budget/ui/UIFormBuilder.kt" />
         <option value="$PROJECT_DIR$/src/test/info/henrywebster/budget/UITest.kt" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/lecture-08-notes" />
+        <option value="$PROJECT_DIR$/log.txt" />
       </list>
     </option>
   </component>
@@ -200,18 +201,18 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="info.henrywebster.budget" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/kotlin" />
       <recent name="$PROJECT_DIR$/src/main/kotlin/info/henrywebster/budget" />
       <recent name="$PROJECT_DIR$/src/main/kotlin" />
       <recent name="$PROJECT_DIR$/src/main" />
       <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/src/kotlin" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -454,13 +455,17 @@
       <option name="project" value="LOCAL" />
       <updated>1526415134826</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Maven test fixes&#10;&#10;Moved project dirs to be more canonical. mvn test command now working as expected. Removed unneeded exec aspects and main file.">
+      <created>1526425860815</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1526425860815</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="UITest_basicUITest - 2018.05.08 at 13h 12m 23s.xml">
-      <configuration name="UITest.basicUITest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="UITest_basicUITest - 2018.05.08 at 13h 13m 16s.xml">
       <configuration name="UITest.basicUITest" configurationId="JUnit" />
     </history-entry>
@@ -488,25 +493,27 @@
     <history-entry file="UITest_uiBuilderTest - 2018.05.12 at 15h 02m 22s.xml">
       <configuration name="UITest.uiBuilderTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="All_in_budget - 2018.05.15 at 18h 05m 15s.xml">
+      <configuration name="All in budget" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="39" width="3200" height="1761" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.4977492" weight="0.32924336" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.503537" side_tool="true" visible="true" weight="0.3674165" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50128615" side_tool="true" visible="true" weight="0.32992503" />
       <window_info anchor="right" id="Maven Projects" order="3" weight="0.19517685" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49939197" weight="0.32962137" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49871382" visible="true" weight="0.32992503" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49517685" weight="0.3285617" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49646303" visible="true" weight="0.3674165" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49646303" weight="0.3674165" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7435345" visible="true" weight="0.16173634" />
-      <window_info id="Structure" order="1" sideWeight="0.25646552" side_tool="true" visible="true" weight="0.16173634" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.74262464" visible="true" weight="0.16398714" />
+      <window_info id="Structure" order="1" sideWeight="0.2573754" side_tool="true" visible="true" weight="0.16398714" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
@@ -518,6 +525,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4996875" weight="0.32980832" />
+      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.4977492" weight="0.32924336" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -534,20 +542,11 @@
     <MESSAGE value="Adding more tests and functionality&#10;&#10;basic budget object, command pattern, simple UI parsing" />
     <MESSAGE value="working on command line interface" />
     <MESSAGE value="working on UI forms" />
-    <option name="LAST_COMMIT_MESSAGE" value="working on UI forms" />
+    <MESSAGE value="Maven test fixes&#10;&#10;Moved project dirs to be more canonical. mvn test command now working as expected. Removed unneeded exec aspects and main file." />
+    <option name="LAST_COMMIT_MESSAGE" value="Maven test fixes&#10;&#10;Moved project dirs to be more canonical. mvn test command now working as expected. Removed unneeded exec aspects and main file." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/kotlin/info/henrywebster/budget/UITest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1333">
-          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
-          <folding>
-            <element signature="e#34#394#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/info/henrywebster/budget/command/ListCmd.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
@@ -566,9 +565,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="155">
           <caret line="10" selection-start-line="10" selection-end-line="13" selection-end-column="23" />
-          <folding>
-            <element signature="e#34#226#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -638,13 +634,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/info/henrywebster/budget/Hello.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/info/henrywebster/budget/Hello.kt" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="806">
@@ -691,26 +681,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="403">
           <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
-          <folding>
-            <element signature="e#34#226#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/info/henrywebster/budget/Hello.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/info/henrywebster/budget/Hello.kt" />
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/info/henrywebster/budget/CommandTest.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="62">
           <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="e#34#226#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -728,20 +706,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/info/henrywebster/budget/Hello.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/info/henrywebster/budget/Hello.kt" />
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/info/henrywebster/budget/CommandTest.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="403">
           <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-          <folding>
-            <element signature="e#34#226#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -752,13 +721,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/info/henrywebster/budget/Hello.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="3" column="60" selection-start-line="3" selection-start-column="60" selection-end-line="3" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/info/henrywebster/budget/Hello.kt" />
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/info/henrywebster/budget/CommandTest.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
@@ -766,13 +729,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/info/henrywebster/budget/Hello.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/info/henrywebster/budget/Hello.kt" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="93">
@@ -780,13 +737,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/info/henrywebster/budget/Hello.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/info/henrywebster/budget/Hello.kt" />
     <entry file="file://$PROJECT_DIR$/scratch.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="341">
@@ -813,13 +764,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="35" selection-start-column="35" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="875">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
         </state>
       </provider>
     </entry>
@@ -881,38 +825,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/info/henrywebster/budget/UITest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
-          <folding>
-            <element signature="e#34#394#0" expanded="true" />
-          </folding>
+        <state>
+          <caret line="40" column="21" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/info/henrywebster/budget/CommandTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-251">
-          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-          <folding>
-            <element signature="e#34#226#0" expanded="true" />
-          </folding>
+        <state>
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="682">
+          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/kotlin/info/henrywebster/budget/CoreTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-256">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        <state>
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
           <folding>
             <element signature="e#34#485#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/lecture-08-notes">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+        <state relative-caret-position="186">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="873">
+          <caret line="51" column="77" selection-start-line="51" selection-start-column="77" selection-end-line="51" selection-end-column="77" />
         </state>
       </provider>
     </entry>

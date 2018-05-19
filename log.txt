@@ -29,3 +29,24 @@ Dealing with Big bugs: 1 hrs
 *   Next week I will have a more detailed report, I didn't notice I should be
     keeping a daily log, rather than the weekly check-ins.
 
+Week 2:
+Design: 4 hrs
+Coding and debugging: 2 hrs
+Dealing with big bugs: .5 hrs
+
+*   Not sure where to put this, most of my time I spent reading about design
+    patterns, mostly from the Head First book to refresh myself as I start
+    to implement more intricate parts. Also looked at more Kotlin resources
+    for best practice guidelines.
+
+*   Maven was again the biggest snag. I am using IntelliJ on my machine, and
+    I hopped onto a machine with only Eclipse. It should have been seamless
+    but there were some issues. I had set up tests wrong but it should work
+    in any IDE now and confirmed works on the command line.
+
+*   Starting to implementing a basic Budget object made up of a composite
+    pattern of items and categories of items.
+
+*   Planned out more keywords and commands to implement.
+
+*   Started diagramming in UML and getting a draft going of the final report.
