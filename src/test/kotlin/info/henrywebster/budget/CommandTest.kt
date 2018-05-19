@@ -12,13 +12,18 @@ import kotlin.test.assertEquals
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CommandTest {
 
+    companion object {
+        // static helper function objects
+        val addFunction = { l: MutableList<String>, s: String -> l.add(s) }
+        val removeFunction = { l: MutableList<String>, s: String -> l.add(s) }
+    }
+
     @Test
     fun addListTest() {
 
         val list = ArrayList<String>()
         val testString = "test"
-        val c =
-                CommandFactory.newListCommand<String>(list, testString, { l: MutableList<String>, s: String -> l.add(s) })
+        val c = CommandFactory.newListCommand<String>(list, testString, addFunction)
         c.run()
 
         assertFalse(list.isEmpty())
@@ -29,10 +34,11 @@ class CommandTest {
     fun removeListTest() {
 
         val list = ArrayList<String>()
-        val cmdAdd = CommandFactory.newAddListCommand(list, "add")
+
+        val cmdAdd = CommandFactory.newListCommand(list, "add", addFunction)
         cmdAdd.run()
 
-        val cmdRemove = CommandFactory.newRemoveListCommand(list, "add")
+        val cmdRemove = CommandFactory.newListCommand(list, "add", removeFunction)
         cmdRemove.run()
 
         assertTrue(list.isEmpty())
