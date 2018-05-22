@@ -1,6 +1,6 @@
 package info.henrywebster.budget.core
 
-class BudgetFactory {
+class BudgetManager {
     companion object {
         private val map: HashMap<String, Budget> = HashMap()
 
@@ -11,18 +11,16 @@ class BudgetFactory {
             return budget
         }
 
-        // TODO: this is getting weird
-        fun addBudget(name: String): Boolean {
-            newBudget(name)
-            return true
-        }
-
         fun removeBudget(name: String): Boolean {
             if (map.containsKey(name)) {
                 map.remove(name)
                 return true
             }
             return false
+        }
+
+        fun contains(name: String): Boolean {
+            return map.contains(name)
         }
 
         // TODO: return exception if not round

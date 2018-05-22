@@ -3,22 +3,18 @@ package info.henrywebster.budget
 import info.henrywebster.budget.command.Command
 import info.henrywebster.budget.command.CommandFactory
 import info.henrywebster.budget.core.Budget
-import info.henrywebster.budget.core.BudgetFactory
-import info.henrywebster.budget.core.KeywordManager
+import info.henrywebster.budget.core.BudgetManager
 import info.henrywebster.budget.ui.UIParser
 import info.henrywebster.budget.ui.UIToken
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
+import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CoreTest {
-
-    companion object {
-        // static helper with common factory
-    }
 
     private fun tmpHelper(token: UIToken, list: MutableList<Budget>, budget: Budget): Command {
         return when (token) {
@@ -55,12 +51,39 @@ class CoreTest {
     }
 
     @Test
+    fun budgetManagerAddThenRemoveTest() {
+
+        val budgetName = "myBudget"
+        val testBudget = BudgetManager.newBudget(budgetName)
+
+        // check add worked
+        assertEquals(testBudget.name, budgetName)
+        assertTrue(BudgetManager.contains(budgetName))
+
+        val removeResult = BudgetManager.removeBudget(budgetName)
+
+        // assure removed worked
+        assertTrue(removeResult)
+        assertFalse(BudgetManager.contains(budgetName))
+    }
+
+    @Test
+    fun budgetManagerRemoveInvalidTest() {
+
+        val budgetName = "myBudget"
+        assertFalse(BudgetManager.contains(budgetName))
+
+        val result = BudgetManager.removeBudget(budgetName)
+        assertFalse(result)
+    }
+/*
+    @Test
     fun keywordBindingTest() {
 
         val keyword = "add"
         val budgetName = "mybudget"
 
-        val function = { name: String -> BudgetFactory.addBudget(name) }
+        val function = { name: String -> BudgetManager.addBudget(name) }
 
         KeywordManager.bind(keyword, function)
 
@@ -72,4 +95,5 @@ class CoreTest {
         val budget = Budget
 
     }
+*/
 }

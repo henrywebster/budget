@@ -1,20 +1,29 @@
 package info.henrywebster.budget.core
 
+import info.henrywebster.budget.command.CommandBuilder
+
 class KeywordManager {
     companion object {
-        private val monoMap: HashMap<String, (String) -> Boolean> = HashMap()
-        private val biMap: HashMap<String, (String, String) -> Boolean> = HashMap()
+        private val map: HashMap<String, CommandBuilder> = HashMap()
 
-        fun bind(keyword: String, action: (String) -> Boolean) {
-            monoMap[keyword] = action
+        fun bind(keyword: String, action: CommandBuilder) {
+            map[keyword] = action
         }
 
-        fun bind(keyword: String, action: (String, String) -> Boolean) {
-            biMap[keyword] = action
+        fun get(keyword: String): CommandBuilder {
+            return map[keyword] ?: throw IllegalArgumentException("Unknown keyword: $keyword")
         }
 
-        fun get(keyword: String): ((String) -> Boolean)? {
-            return monoMap[keyword]
-        }
+        /**
+         * > Ask the keyword manager for a description of how the function is built
+         * > verify the input string
+         *
+         *
+         * create myBudget
+         *
+         * 1.   look up 'create' in KeywordManager hash table
+         * 2.   pre-check input (make sure budget doesn't already exist)
+         * 3.   provide back a Command
+         */
     }
 }
