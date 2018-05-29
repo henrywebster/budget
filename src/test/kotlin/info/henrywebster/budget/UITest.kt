@@ -1,89 +1,138 @@
 package info.henrywebster.budget
 
-import info.henrywebster.budget.core.Budget
-import info.henrywebster.budget.ui.*
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
+import info.henrywebster.budget.command.CommandFactory
+import info.henrywebster.budget.core.BudgetManager
+import info.henrywebster.budget.ui.UIContext
+import info.henrywebster.budget.ui.UIContextBuilder
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
-
-import org.junit.jupiter.api.TestFactory
-import java.io.ByteArrayInputStream
-import java.nio.charset.StandardCharsets
 import java.util.function.Predicate
-import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
+
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class UITest {
 
-    @Test
-    fun basicUITest() {
+    companion object {
 
-        val parser = UIParser()
-        val example = "add mybudget"
-
-
-        val bundle = parser.parse(example)
-        assertEquals(bundle.token, UIToken.ADD)
-        assertTrue(bundle.args.contains("mybudget"))
-
-        // parser.parse(ByteArrayInputStream(example.toByteArray(Charsets.UTF_8)))
+        // example budget map, would be in the BudgetManager
+        private const val budgetName = "fooBudget"
     }
 
-    @Test
-    fun uiBuilderTest() {
+    private fun defaultContext(): UIContext {
+        val createBudgetMethod = { name: String ->
+            BudgetManager.newBudget(name)
+        }
 
-        val budgetMap = HashMap<String, Budget>()
+        val createBudgetCommand = { name: String ->
+            CommandFactory.newMonoCommand(name, createBudgetMethod)
+        }
 
+        val deleteBudgetMethod = { name: String ->
+            BudgetManager.removeBudget(name)
+        }
 
-        budgetMap["mybudget"] = Budget("mybudget")
+        val deleteBudgetCommand = { name: String ->
+            CommandFactory.newMonoCommand(name, deleteBudgetMethod)
+        }
 
-        val builder = UIFormBuilder()
-
-        val testFunc = { arg: String -> budgetMap.contains(arg) }
-        val predicate = Predicate<String>(testFunc)
-
-        builder.add("add", predicate)
-        builder.add("remove", predicate)
-
-        val form = builder.toUIForm("Test Menu")
-
-        assertEquals(
-                "Test Menu",
-                form.getHeading()
-        )
-
-        assertTrue(
-                form.checkInput(0, "mybudget")
-        )
-
-        assertFalse(
-                form.checkInput(0, "mybudget2")
-        )
-    }
-
-    // TODO(tmp)
-    @Test
-    fun uiTmpFormTest() {
-
-        val builder = UIFormBuilder()
-
-        val testFun: (String) -> Boolean = { arg: String ->
-            try {
-                Integer.parseInt(arg)
-                true
-            } catch (e: NumberFormatException) {
-                false
+        val listBudgetMethod = {
+            for (budget in BudgetManager.getList()) {
+                println("    - $budget")
             }
         }
-        val predicate = Predicate<String>(testFun)
 
-        builder.add("balance", predicate)
-        builder.add("exit?", predicate)
+        val listBudgetCommand = { _: String ->
+            CommandFactory.newNoInputCommand(listBudgetMethod)
+        }
 
-        val form = builder.toUIForm("Account balance")
+        val exitMethod = { System.exit(0) }
+        val exitCommand = { _: String -> CommandFactory.newNoInputCommand(exitMethod) }
 
-        assertTrue(form.checkInput(0, "100"))
-        assertFalse(form.checkInput(0, "notANumber"))
+        val contextBuilder = UIContextBuilder()
+
+        contextBuilder.addDirective(
+                "create",
+                1,
+                createBudgetCommand,
+                Predicate({ name: String -> !BudgetManager.contains(name) }),
+                "already exists"
+        )
+
+        contextBuilder.addDirective(
+                "delete",
+                1,
+                deleteBudgetCommand,
+                Predicate({ name: String -> BudgetManager.contains(name) }),
+                "does not exist"
+        )
+
+        contextBuilder.addDirective(
+                "list",
+                0,
+                listBudgetCommand,
+                Predicate { true },
+                "list budget failed"
+        )
+
+        contextBuilder.addDirective(
+                "exit",
+                0,
+                exitCommand,
+                Predicate({ true }),
+                "exit failed"
+        )
+
+        return contextBuilder.build()
+    }
+
+    @BeforeEach
+    fun beforeTest() {
+        BudgetManager.clear()
+    }
+
+    @Test
+    fun validKeywordTest() {
+
+        val context = defaultContext()
+
+        context.input("create $budgetName")
+        assertTrue(BudgetManager.contains(budgetName))
+
+        context.input("create fooBudget2")
+        assertTrue(BudgetManager.contains("fooBudget2"))
+
+        context.input("delete $budgetName")
+        assertFalse(BudgetManager.contains(budgetName))
+        assertTrue(BudgetManager.contains("fooBudget2"))
+    }
+
+    @Test
+    fun invalidKeywordTest() {
+
+        val context = defaultContext()
+
+        // keyword "created" is not valid, so IllegalArgumentException should be thrown
+        assertFailsWith(IllegalArgumentException::class, {
+            context.input("created $budgetName")
+        })
+
+        // nothing should have been done
+        assertFalse(BudgetManager.contains(budgetName))
+    }
+
+    @Test
+    fun invalidArgTest() {
+
+        val context = defaultContext()
+
+        // try to add a budget with the same name twice
+        context.input("create $budgetName")
+        assertFailsWith(IllegalArgumentException::class, {
+            context.input("create $budgetName")
+        })
     }
 }
