@@ -3,15 +3,12 @@ package info.henrywebster.budget.command
 
 class CommandFactory {
     companion object {
-
-        fun <C : MutableCollection<T>, T> newMutableCollectionCommand(list: C, item: T, method: (C, T) -> Boolean): Command {
-            return MutableCollectionCmd(list, item, method)
-        }
-
-        fun <T> newMonoCommand(item: T, method: (T) -> Boolean): Command {
+        fun <T> newMonoCommand(item: T, method: (T) -> Unit): Command {
             return MonoCommand(item, method)
         }
 
-
+        fun newNoInputCommand(method: () -> Unit): Command {
+            return NoInputCommand(method)
+        }
     }
 }

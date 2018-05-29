@@ -1,14 +1,15 @@
 package info.henrywebster.budget
 
-import info.henrywebster.budget.command.Command
-import info.henrywebster.budget.command.CommandFactory
+import info.henrywebster.budget.account.ItemFactory
 import info.henrywebster.budget.core.Budget
 import info.henrywebster.budget.core.BudgetManager
-import info.henrywebster.budget.ui.UIParser
-import info.henrywebster.budget.ui.UIToken
+import info.henrywebster.budget.time.PeriodFactory
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
+import java.io.*
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -16,84 +17,118 @@ import kotlin.test.assertTrue
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CoreTest {
 
-    private fun tmpHelper(token: UIToken, list: MutableList<Budget>, budget: Budget): Command {
-        return when (token) {
-            UIToken.ADD -> CommandFactory.newMutableCollectionCommand(list, budget, TestHelper.addBudgetFunction)
-            UIToken.REMOVE -> CommandFactory.newMutableCollectionCommand(list, budget, TestHelper.removeBudgetFunction)
-            else -> throw Exception()
-        }
+    companion object {
+        const val budgetName = "fooBudget"
+    }
+
+    // helper function for comparing doubles with an epsilon
+    private fun checkDouble(a: Double, b: Double, epsilon: Double = 0.001): Boolean {
+        return Math.abs(a - b) < epsilon
+    }
+
+    @BeforeEach
+    fun beforeTest() {
+        BudgetManager.clear()
     }
 
     @Test
-    fun addAndRemoveValidBudgetTest() {
-
-        val parser = UIParser()
-        val addBundle = parser.parse("add mybudget")
-
-        // create the global list of budgets
-        val budgetList = ArrayList<Budget>()
-
-        // tmp
-        val b = Budget(addBundle.args[0])
-
-        // TODO(fix): make new class, also cheating by using the same budget object
-
-        val addCmd = tmpHelper(addBundle.token, budgetList, b)
-        addCmd.run()
-
-        assertTrue(budgetList.contains(b))
-
-        val remBundle = parser.parse("remove mybudget")
-        val remCmd = tmpHelper(remBundle.token, budgetList, b)
-        remCmd.run()
-
-        assertFalse(budgetList.contains(b))
-    }
-
-    @Test
-    fun budgetManagerAddThenRemoveTest() {
-
-        val budgetName = "myBudget"
-        val testBudget = BudgetManager.newBudget(budgetName)
-
-        // check add worked
-        assertEquals(testBudget.name, budgetName)
+    fun addValidTest() {
+        BudgetManager.newBudget(budgetName)
         assertTrue(BudgetManager.contains(budgetName))
 
-        val removeResult = BudgetManager.removeBudget(budgetName)
+        val budget = BudgetManager.find(budgetName)
+        assertEquals(budget.name, budgetName)
+    }
 
-        // assure removed worked
-        assertTrue(removeResult)
+    @Test
+    fun addAndRemoveValidTest() {
+
+        BudgetManager.newBudget(budgetName)
+        assertTrue(BudgetManager.contains(budgetName))
+
+        val budget = BudgetManager.find(budgetName)
+        assertEquals(budget.name, budgetName)
+
+        BudgetManager.removeBudget(budgetName)
         assertFalse(BudgetManager.contains(budgetName))
     }
 
     @Test
-    fun budgetManagerRemoveInvalidTest() {
-
-        val budgetName = "myBudget"
-        assertFalse(BudgetManager.contains(budgetName))
-
-        val result = BudgetManager.removeBudget(budgetName)
-        assertFalse(result)
+    fun findInvalidTest() {
+        assertFailsWith(RuntimeException::class,
+                { BudgetManager.find("barBudget") })
     }
-/*
+
     @Test
-    fun keywordBindingTest() {
+    fun clearTest() {
+        BudgetManager.newBudget(budgetName)
+        assertTrue(BudgetManager.contains(budgetName))
 
-        val keyword = "add"
-        val budgetName = "mybudget"
-
-        val function = { name: String -> BudgetManager.addBudget(name) }
-
-        KeywordManager.bind(keyword, function)
-
-        val someFunction = KeywordManager.get(keyword)
-        val someCmd = CommandFactory.newMonoCommand(someFunction)
-
-        //////
-        val budgetList = ArrayList<Budget>()
-        val budget = Budget
-
+        BudgetManager.clear()
+        assertFalse(BudgetManager.contains(budgetName))
     }
-*/
+
+    @Test
+    fun setActiveValidTest() {
+
+        BudgetManager.newBudget(budgetName)
+        val budget = BudgetManager.find(budgetName)
+        BudgetManager.setActive(budget)
+        assertEquals(budget, BudgetManager.getActive())
+    }
+
+    @Test
+    fun calculateTest() {
+
+        BudgetManager.newBudget(budgetName)
+        val budget = BudgetManager.find(budgetName)
+
+        val debit = budget.getItem("cash")
+        val credit = budget.getItem("income")
+        val entry = ItemFactory.newLine(1000.0, PeriodFactory.createMonth())
+
+        budget.addItem(entry, credit, debit)
+        val valueA = budget.calculate(PeriodFactory.createMonth(), debit)
+        assertTrue(checkDouble(1000.00, valueA.getValue()))
+
+        val valueB = budget.calculate(PeriodFactory.createYear(), debit)
+        assertTrue(checkDouble(12000.00, valueB.getValue()))
+
+        val valueC = budget.calculate(PeriodFactory.createMonth(), credit)
+        assertTrue(checkDouble(-1000.00, valueC.getValue()))
+
+        val valueD = budget.calculate(PeriodFactory.createYear(), credit)
+        assertTrue(checkDouble(-12000.00, valueD.getValue()))
+    }
+
+    @Test
+    fun serializeTest() {
+
+        BudgetManager.newBudget(budgetName)
+        val budget = BudgetManager.find(budgetName)
+
+        val debit = budget.getItem("cash")
+        val credit = budget.getItem("income")
+        val entry = ItemFactory.newLine(1000.0)
+
+        budget.addItem(entry, credit, debit)
+
+        val value = budget.calculate(PeriodFactory.createYear(), debit)
+
+        assertEquals(1000.0, value.getValue())
+
+        // write to a file
+        ObjectOutputStream(FileOutputStream(File("test.bgt"))).use {
+            it.writeObject(budget)
+        }
+
+        // read from file
+        ObjectInputStream(FileInputStream(File("test.bgt"))).use {
+            val readBudget = it.readObject() as Budget
+            val readDebit = readBudget.getItem("cash")
+            val readValue = readBudget.calculate(PeriodFactory.createYear(), readDebit)
+
+            assertEquals(value.getValue(), readValue.getValue())
+        }
+    }
 }

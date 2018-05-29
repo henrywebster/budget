@@ -39,6 +39,12 @@
             <version>3.0.3</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-runner</artifactId>
+            <version>1.2.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -103,7 +109,7 @@
                         <configuration>
                             <archive>
                                 <manifest>
-                                    <mainClass>info.henrywebster.budget.HelloKt</mainClass>
+                                    <mainClass>info.henrywebster.budget.app.BudgetMainKt</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>
@@ -120,6 +126,7 @@
                     <source>8</source>
                     <target>8</target>
                 </configuration>
+                <version>3.7.0</version>
             </plugin>
         </plugins>
     </build>

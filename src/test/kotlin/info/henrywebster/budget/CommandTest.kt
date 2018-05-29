@@ -2,10 +2,8 @@ package info.henrywebster.budget
 
 
 import info.henrywebster.budget.command.CommandFactory
-import info.henrywebster.budget.core.Budget
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
-import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -15,11 +13,17 @@ class CommandTest {
 
 
     @Test
-    fun addListTest() {
+    fun monoAddTest() {
 
         val list = ArrayList<String>()
-        val testString = "test"
-        val c = CommandFactory.newMutableCollectionCommand(list, testString, TestHelper.addStringFunction)
+        val testString = "exec"
+
+        val addToList = test@{ str: String ->
+            list.add(str)
+            return@test
+        }
+
+        val c = CommandFactory.newMonoCommand(testString, addToList)
 
         c.run()
 
@@ -28,14 +32,25 @@ class CommandTest {
     }
 
     @Test
-    fun removeListTest() {
+    fun monoAddRemoveTest() {
 
         val list = ArrayList<String>()
+        val testString = "add"
 
-        val cmdAdd = CommandFactory.newMutableCollectionCommand(list, "add", TestHelper.addStringFunction)
+        val addToList = test@{ str: String ->
+            list.add(str)
+            return@test
+        }
+
+        val cmdAdd = CommandFactory.newMonoCommand(testString, addToList)
         cmdAdd.run()
 
-        val cmdRemove = CommandFactory.newMutableCollectionCommand(list, "add", TestHelper.removeStringFunction)
+        val removeFromList = test@{ str: String ->
+            list.remove(str)
+            return@test
+        }
+
+        val cmdRemove = CommandFactory.newMonoCommand(testString, removeFromList)
         cmdRemove.run()
 
         assertTrue(list.isEmpty())
@@ -43,27 +58,18 @@ class CommandTest {
     }
 
     @Test
-    fun budgetCommandTest() {
+    fun noInputAddTest() {
+        val list = ArrayList<String>()
+        val testString = "add"
 
-        val budget = Budget("mybudget")
+        val addStringToList = test@{
+            list.add(testString)
+            return@test
+        }
 
-        val testAmt = 945
-        val testLiab = 500
-        val cmdBuySomething = CommandFactory.newMonoCommand(
-                budget, { b: Budget ->
-            b.assets += testAmt
-            b.liabilities += testLiab
-            b.equity = b.assets - b.liabilities; true
-        })
+        val cmdAdd = CommandFactory.newNoInputCommand(addStringToList)
+        cmdAdd.run()
 
-        assertEquals(0, budget.assets)
-        assertEquals(0, budget.equity)
-        assertEquals(0, budget.liabilities)
-
-        cmdBuySomething.run()
-
-        assertEquals(945, budget.assets)
-        assertEquals(445, budget.equity)
-        assertEquals(500, budget.liabilities)
+        assertTrue(list.contains(testString))
     }
 }
